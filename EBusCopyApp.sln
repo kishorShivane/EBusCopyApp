@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EBusCopyApp", "EBusCopyApp\EBusCopyApp.csproj", "{1555A6E9-2B55-42CE-89DE-321C4D84EF05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EBusCopy.Service", "EBusCopy.Service\EBusCopy.Service.csproj", "{DABC98D1-EA77-4DCE-9E16-F64B33F33A19}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "EBusCopy.Setup", "EBusCopy.Setup\EBusCopy.Setup.vdproj", "{E56CCD58-347D-440E-988B-8A9010551293}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1555A6E9-2B55-42CE-89DE-321C4D84EF05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1555A6E9-2B55-42CE-89DE-321C4D84EF05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1555A6E9-2B55-42CE-89DE-321C4D84EF05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1555A6E9-2B55-42CE-89DE-321C4D84EF05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DABC98D1-EA77-4DCE-9E16-F64B33F33A19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DABC98D1-EA77-4DCE-9E16-F64B33F33A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DABC98D1-EA77-4DCE-9E16-F64B33F33A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DABC98D1-EA77-4DCE-9E16-F64B33F33A19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E56CCD58-347D-440E-988B-8A9010551293}.Debug|Any CPU.ActiveCfg = Debug
+		{E56CCD58-347D-440E-988B-8A9010551293}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4CB85920-FF39-4BCA-A866-5EA7EA63913A}
+	EndGlobalSection
+EndGlobal
