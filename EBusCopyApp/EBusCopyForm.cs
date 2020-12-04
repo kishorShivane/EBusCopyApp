@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EBusCopyApp
@@ -37,31 +38,43 @@ namespace EBusCopyApp
 
         private void StartProcess(object sender, EventArgs e)
         {
-            //while (true)
-            //{
-                #region logTrigger
-                List<string> files = helper.DirSearch(Constants.InputFilePath);
-                if (files.Any())
-                {
-                    files.ForEach(x =>
-                    {
-                        string fileName = Path.GetFileName(x);
+            List<string> sources = Constants.SourcePathKeys.Split(',').ToList();
+            sources.ForEach(x =>
+            {
+                string inputFilePath = Constants.GetConfiguration(x);
+                string outputPath = Constants.GetConfiguration($"{x}MoveTo");
+                string backupPath = Constants.GetConfiguration($"{x}BackUpTo");
 
-                        if (!helper.IsFileLocked(x))
+                new Task(() =>
+                {
+                    ProcessFiles(inputFilePath, outputPath, backupPath);
+                }).Start();
+
+            });
+        }
+
+        private void ProcessFiles(string inputFilePath, string outputPath, string backupPath)
+        {
+            List<string> files = helper.DirSearch(inputFilePath);
+            if (files.Any())
+            {
+                files.ForEach(x =>
+                {
+                    string fileName = Path.GetFileName(x);
+
+                    if (!helper.IsFileLocked(x))
+                    {
+                        string newFileName = Path.GetFileNameWithoutExtension(x) + "_" + Guid.NewGuid();
+                        string todayDate = DateTime.Now.ToString("dd_MM_yyyy");
+                        helper.MoveFile(x, outputPath, newFileName);
+                        helper.MoveFile(x, backupPath + "//" + todayDate, newFileName);
+                        if (File.Exists(x))
                         {
-                            string newFileName = Path.GetFileNameWithoutExtension(x) + "_" + Guid.NewGuid();
-                            string todayDate = DateTime.Now.ToString("dd_MM_yyyy");
-                            helper.MoveFile(x, Constants.OutPutFilePath, newFileName);
-                            helper.MoveFile(x, Constants.BackUpFilePath + "//" + todayDate, newFileName);
-                            if (File.Exists(x))
-                            {
-                                File.Delete(x);
-                            }
+                            File.Delete(x);
                         }
-                    });
-                }
-                #endregion
-            //}
+                    }
+                });
+            }
         }
 
         public void InitializeRefreshTimer()

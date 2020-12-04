@@ -38,6 +38,7 @@ namespace EBusCopyApp.Utilities
         public List<string> DirSearch(string sDir)
         {
             List<string> files = new List<string>();
+            if (string.IsNullOrEmpty(sDir)) return files;
             try
             {
                 foreach (string f in Directory.GetFiles(sDir))
